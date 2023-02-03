@@ -1,14 +1,11 @@
-const http = require('http');
-const express = require('express');
+const express = require('express')
+const app = express()
+const port = 3000
 
-// expressオブジェクトの生成
-const app = express();
+app.get('/', (req, res) => {
+  res.send('Hello ' + req.query.hoge);
+})
 
-// getでリクエスト時に処理するコールバック関数指定
-app.get("/", function(req, res){
-    return res.send("Hello World");
-});
-
-// サーバの設定
-const server = http.createServer(app);
-server.listen(3000);
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
